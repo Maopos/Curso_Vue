@@ -8,16 +8,38 @@
 </head>
 <body>
     <div id="app">
-
+        <p>Componente 1</p>
+        {{title}}
+        <input type="text" v-model="nombre">
+        {{nombre}}
+    </div>
+    <hr>
+    
+    <div id="component">
+        <p>Componente 2</p>
+        <input type="text" v-model="text">
+        {{text}}
     </div>
     <script src='https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js'></script>
     <script>
+
     const app = new Vue({
         el: '#app',
         data:{
-            
+           title: 'maoposites',
+           nombre: 'Mauricio Posada' 
         }
+    
     });
+
+    const component = new Vue({
+        el: '#component',
+        data:{
+           text: app.nombre
+        }
+    
+    });
+
     </script>
 </body>
 </html>

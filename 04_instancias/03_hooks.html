@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id='app'>
+        <center>
+            {{title}}
+            <br>
+            <br>
+            <input type="text" v-model="name">
+            <br>
+            <br>
+            {{name}}
+        </center>
+    
+    </div>
+    
+    <script src='https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js'></script>
+    <script>
+    const app = new Vue({
+        el: '#app',
+        data:{
+            title: 'Maoposites',
+            name: 'Mauricio'
+        },
+        beforeCreate() {
+            alert('Antes de crear componente' + ' ' + this.name)
+        },
+        created() {
+            alert('Creando componente' + ' ' + this.name)
+        },
+        beforeMount(){
+            alert('Justo antes de añadir al DOM' + ' ' + this.name)
+        },
+        mounted() {
+            alert('Después de añadir al DOM' + ' ' + this.name)  
+        },
+        beforeUpdate() {
+            alert('Objeto data cambia' + ' ' + this.name)     
+        },
+        updated() {
+            alert('Objeto data cambio en el DOM' + ' ' + this.name)       
+        }
+       // beforeDestroy - se ejecuta antes de eliminar una instancia
+       // destroyed - se ejecuta cuando una instancia ya esta eliminada
+    });
+    </script>
+</body>
+</html>

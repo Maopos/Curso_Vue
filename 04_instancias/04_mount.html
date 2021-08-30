@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>   
+    <div id='app'>
+        {{title}}
+        <br>
+        <br>
+    {{temp}}
+    <input type="text" v-model="name">
+    {{name}}
+</div>
+<div id="component">
+    {{temp}}
+    
+    <input type="text" v-model="text">
+    {{text}}
+    <br>
+    <br>
+    <center>
+        <button @click="mountInstance()">Mount 1th Instance</button>
+    </center>
+    </div>
+    
+    <script src='https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js'></script>
+    <script>
+
+    const app = new Vue({
+        
+        data:{
+            title: 'Maoposites',
+            name: 'Mauricio',
+            temp: '1th Component'   
+        }
+    });
+
+    const component = new Vue({
+        el: '#component',
+        data: {
+            text: app.name,
+            temp: ' 2th Component'
+        },
+        methods:{
+            mountInstance(){
+                app.$mount('#app')
+            }
+        }
+    });
+    </script>
+</body>
+</html>

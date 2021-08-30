@@ -1,0 +1,14 @@
+Init proyect:
+vue init webpack-simple proyect_name
+
+go to the proyect directory:
+cd proyect_name
+
+install node modules:
+npm install
+
+run local server:
+npm run dev
+
+Production:
+npm run build

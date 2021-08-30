@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/accounting.js/0.3.2/accounting.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <hr>
+        <center>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Company</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="index in stock"> 
+                        <td>{{index.model}}</td>
+                        <td>{{index.company}}</td>
+                        <td>{{index.price | currency}}</td>
+                        <td>{{index.date | date}}</td>
+                </tbody>
+            </table>
+        </center>
+    </div>
+    
+    <script src='https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js'></script>
+    <script>
+
+        Vue.filter('currency', function (value) {
+            return accounting.formatMoney(value, "$", 2, ".", ",");
+        });
+
+        Vue.filter('date', function (value) {
+            return moment(value).format('dddd, Do MMMM YYYY.');
+        });
+
+    const app = new Vue({
+        el: '#app',
+        data:{
+            
+            stock: [
+                { model: 'iPhone X', company: 'Apple', price: '450.00', date: '2018-01-01' },
+                { model: 'Galaxy S8', company: 'Samsung', price: '600.00', date: '2017-12-01' },
+                { model: 'Pixel 2', company: 'Google', price: '320.00', date: '2017-11-01' },
+                { model: 'Pixel 2 XL', company: 'Google', price: '645.00', date: '2017-10-01' },
+                { model: 'iPhone XR', company: 'Apple', price: '680.00', date: '2018-05-09' },
+            ]
+        }
+    });
+    </script>
+</body>
+</html>
